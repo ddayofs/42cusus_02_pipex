@@ -6,7 +6,7 @@
 #    By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 16:34:18 by donglee2          #+#    #+#              #
-#    Updated: 2023/07/12 20:30:50 by donglee2         ###   ########seoul.kr   #
+#    Updated: 2023/07/13 17:16:16 by donglee2         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ MANDATORY_DIRS = ./mandatory_files
 
 MANDATORY_SRCS = $(MANDATORY_DIRS)/pipex.c\
 $(MANDATORY_DIRS)/path.c\
+$(MANDATORY_DIRS)/path_helper.c\
 $(MANDATORY_DIRS)/exec_cmd.c\
 $(MANDATORY_DIRS)/init_variable.c\
 
@@ -27,6 +28,7 @@ BONUS_DIRS = ./bonus_files
 
 BONUS_SRCS = $(BONUS_DIRS)/pipex_bonus.c\
 $(BONUS_DIRS)/path_bonus.c\
+$(BONUS_DIRS)/path_helper_bonus.c\
 $(BONUS_DIRS)/exec_cmd_bonus.c\
 $(BONUS_DIRS)/init_variable_bonus.c\
 

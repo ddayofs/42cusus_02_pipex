@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:04:58 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/12 13:51:20 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/13 18:20:11 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	wait_child_proc(pid_t last_pid, int argc, int *status)
 	int		parent_status;
 
 	i = -1;
-	parent_status = 0;
 	while (++i < argc - 3)
 	{
 		pid = waitpid(-1, status, 0);
@@ -36,12 +35,12 @@ int	main(int argc, char *argv[], char **envp)
 	pid_t	pid;
 	t_args	args;
 
-	if (argc != 5 || pipe(fds) == -1)
+	if (argc < 5)
 		return (1);
-	add_file_name_to_args(argv, argc, &args);
+	if (pipe(fds) == -1)
+		return (1);
+	init_args(argv, argc, &args);
 	while (++args.idx < argc - 1)
-		pid = exec_child_proc(&args, args.idx, fds, envp);
-	close(fds[0]);
-	close(fds[1]);
+		pid = fork_proc(&args, fds, envp);
 	wait_child_proc(pid, argc, &status);
 }
