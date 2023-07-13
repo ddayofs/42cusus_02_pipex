@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:04:58 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/13 18:22:55 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/13 20:37:10 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,20 @@ void	wait_child_proc(pid_t last_pid, int argc, int *status)
 	exit (parent_status);
 }
 
+// int	chk_name_dup(char *file_name)
+// {
+// 	if (!access(file_name, F_OK))
+// 	{
+// 		ft_strlen(filen)
+// 	}
+// }
+
 int	make_tmp_here_doc_file(char *str)
 {
 	int		fd;
 	char	*new_line;
 
-	fd = open("tmp_here_doc", O_RDWR | O_TRUNC | O_CREAT, 0644);
+	fd = open("tmp", O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (fd == -1)
 		exit(1);
 	new_line = get_next_line(0);
@@ -68,6 +76,6 @@ int	main(int argc, char *argv[], char **envp)
 		init_args(argv, argc, &args);
 	while (++args.idx < argc - 1)
 		pid = fork_proc(&args, fds, envp);
+	unlink("tmp");
 	wait_child_proc(pid, argc, &status);
-	unlink("./tmp_here_doc");
 }

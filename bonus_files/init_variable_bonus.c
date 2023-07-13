@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:07:05 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/13 16:54:26 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/13 19:02:23 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_args(char *argv[], int argc, t_args *args)
 
 void	init_args_here_doc(char *argv[], int argc, t_args *args)
 {
-	args->infile_name = "tmp_here_doc";
+	args->infile_name = "tmp";
 	args->outfile_name = argv[argc - 1];
 	args->argv = argv;
 	args->idx = 2;
