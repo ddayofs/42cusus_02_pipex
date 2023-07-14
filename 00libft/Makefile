@@ -6,7 +6,7 @@
 #    By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 16:03:50 by donglee2          #+#    #+#              #
-#    Updated: 2023/07/12 18:19:21 by donglee2         ###   ########seoul.kr   #
+#    Updated: 2023/07/14 16:27:16 by donglee2         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ ft_isalnum.c\
 ft_isalpha.c\
 ft_isascii.c\
 ft_isdigit.c\
+ft_islonger.c\
 ft_isprint.c\
 ft_itoa.c\
 ft_memchr.c\
@@ -40,6 +41,7 @@ ft_strlcat.c\
 ft_strlcpy.c\
 ft_strlen.c\
 ft_strmapi.c\
+ft_strcmp.c\
 ft_strncmp.c\
 ft_strnstr.c\
 ft_strrchr.c\
@@ -47,7 +49,6 @@ ft_strtrim.c\
 ft_substr.c\
 ft_tolower.c\
 ft_toupper.c\
-
 
 BONUS_SRCS = ft_lstnew.c\
 ft_lstadd_front.c\

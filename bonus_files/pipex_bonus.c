@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:04:58 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/13 20:37:10 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/14 17:49:09 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,27 @@ void	wait_child_proc(pid_t last_pid, int argc, int *status)
 	exit (parent_status);
 }
 
-// int	chk_name_dup(char *file_name)
-// {
-// 	if (!access(file_name, F_OK))
-// 	{
-// 		ft_strlen(filen)
-// 	}
-// }
-
-int	make_tmp_here_doc_file(char *str)
+int	make_tmp_here_doc_file(char *eof, t_args *args)
 {
 	int		fd;
+	char	*tmp;
 	char	*new_line;
 
-	fd = open("tmp", O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	tmp = ft_strjoin(eof, "\n");
+	if (!tmp)
+		exit(1);
+	fd = open(args->infile_name, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (fd == -1)
 		exit(1);
 	new_line = get_next_line(0);
-	while (ft_strncmp(str, new_line, ft_strlen(str)))
+	while (ft_strcmp(tmp, new_line))
 	{
 		ft_putstr_fd(new_line, fd);
 		free(new_line);
 		new_line = get_next_line(0);
 	}
 	free(new_line);
+	free(tmp);
 	close(fd);
 	return (fd);
 }
@@ -63,19 +60,16 @@ int	main(int argc, char *argv[], char **envp)
 	pid_t	pid;
 	t_args	args;
 
-	if (argc < 5)
+	if (argc < 5 || pipe(fds) == -1)
 		return (1);
-	if (pipe(fds) == -1)
-		return (1);
-	if (!ft_strncmp(argv[1], "here_doc", 5))
+	if (!ft_strcmp(argv[1], "here_doc"))
 	{
-		make_tmp_here_doc_file(argv[2]);
 		init_args_here_doc(argv, argc, &args);
+		make_tmp_here_doc_file(argv[2], &args);
 	}
 	else
 		init_args(argv, argc, &args);
 	while (++args.idx < argc - 1)
 		pid = fork_proc(&args, fds, envp);
-	unlink("tmp");
 	wait_child_proc(pid, argc, &status);
 }

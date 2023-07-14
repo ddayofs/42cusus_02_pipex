@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:05:56 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/13 20:37:21 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/14 21:20:47 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*find_cmd_path(char *extracted_cmd, char **envp)
 		if (!access(split_path[i], X_OK))
 		{
 			ret = ft_strdup(split_path[i]);
+			if (!ret)
+				exit(1);
 			free_all_splits(split_path);
 			return (ret);
 		}
