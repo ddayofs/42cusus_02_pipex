@@ -6,13 +6,13 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:01:08 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/14 17:12:34 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/15 15:42:51 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	exec_1st_cmd(int fds[2], t_args *args, char **envp)
+static void	exec_1st_cmd(int fds[2], t_args *args, char **envp)
 {
 	int	fd;
 
@@ -34,7 +34,7 @@ void	exec_1st_cmd(int fds[2], t_args *args, char **envp)
 	exit(1);
 }
 
-void	exec_mid_cmd(int tmp_fd, int fds[2], t_args *args, char **envp)
+static void	exec_mid_cmd(int tmp_fd, int fds[2], t_args *args, char **envp)
 {
 	dup2(tmp_fd, STDIN_FILENO);
 	close(tmp_fd);
@@ -46,7 +46,7 @@ void	exec_mid_cmd(int tmp_fd, int fds[2], t_args *args, char **envp)
 	exit(1);
 }
 
-void	exec_last_cmd(int tmp_fd, t_args *args, char **envp)
+static void	exec_last_cmd(int tmp_fd, t_args *args, char **envp)
 {
 	int	fd;
 

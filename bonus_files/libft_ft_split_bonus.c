@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   libft_ft_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 15:33:59 by donglee2          #+#    #+#             */
-/*   Updated: 2023/03/24 11:35:51 by donglee2         ###   ########seoul.kr  */
+/*   Created: 2023/07/15 15:00:59 by donglee2          #+#    #+#             */
+/*   Updated: 2023/07/15 15:01:13 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex_bonus.h"
 
 static int	words_count(char const *str, char c)
 {

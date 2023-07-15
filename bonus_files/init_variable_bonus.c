@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:07:05 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/14 21:24:29 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/15 15:52:41 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,7 @@ void	update_cmd_in_args(int idx, t_args *args, char **envp)
 
 	extracted_cmd = extract_cmd(args->argv[idx]);
 	if (ft_strchr(extracted_cmd, '/'))
-	{
-		if (!access(extracted_cmd, X_OK))
-		{
-			args->cmd_path = ft_strdup(extracted_cmd);
-			if (!args->cmd_path)
-				exit(1);
-		}
-		else
-		{
-			print_err(extracted_cmd);
-			exit(127);
-		}
-	}
+		args->cmd_path = find_cmd_path_absolute_case(extracted_cmd);
 	else
 		args->cmd_path = find_cmd_path(extracted_cmd, envp);
 	free(extracted_cmd);

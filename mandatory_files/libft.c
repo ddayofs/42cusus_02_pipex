@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 13:04:53 by donglee2          #+#    #+#             */
-/*   Updated: 2023/06/05 14:47:04 by donglee2         ###   ########seoul.kr  */
+/*   Created: 2023/07/15 14:58:17 by donglee2          #+#    #+#             */
+/*   Updated: 2023/07/15 15:56:14 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
 static int	how_many_digits_1(long long nbr, int base_len)
 {
@@ -59,4 +59,48 @@ char	*ft_itoa(int n)
 	}
 	ret[ret_len] = 0;
 	return (ret);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	while (*ptr1 || *ptr2)
+	{
+		if (*ptr1 != *ptr2)
+			return ((*ptr1 - *ptr2));
+		ptr1++;
+		ptr2++;
+	}
+	return (0);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = -1;
+	while (s[++i])
+		write(fd, &s[i], 1);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	*ptr;
+	char	ch;
+
+	ch = (char)c;
+	ptr = (char *)s;
+	while (*ptr)
+	{
+		if (*ptr == ch)
+			return (ptr);
+		ptr++;
+	}
+	if (ch == '\0')
+		return (ptr);
+	return (0);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:58:01 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/12 18:24:01 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/15 15:56:06 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-char	*rm_node(int fd, t_list_gnl **head_node_ptr)
+static char	*rm_node(int fd, t_list_gnl **head_node_ptr)
 {
 	t_list_gnl	*cur_node;
 	t_list_gnl	*prev_node;
@@ -38,7 +38,7 @@ char	*rm_node(int fd, t_list_gnl **head_node_ptr)
 	return (NULL);
 }
 
-t_list_gnl	*find_node(int fd, t_list_gnl **head_node_ptr)
+static t_list_gnl	*find_node(int fd, t_list_gnl **head_node_ptr)
 {
 	t_list_gnl	*cur_node;
 	t_list_gnl	*new_node;
@@ -65,7 +65,7 @@ t_list_gnl	*find_node(int fd, t_list_gnl **head_node_ptr)
 	return (new_node);
 }
 
-char	*cut_line(int fd, t_list_gnl **head_node_ptr, t_list_gnl *node)
+static char	*cut_line(int fd, t_list_gnl **head_node_ptr, t_list_gnl *node)
 {
 	char	*ret_line;
 	char	*tmp;
@@ -93,7 +93,7 @@ char	*cut_line(int fd, t_list_gnl **head_node_ptr, t_list_gnl *node)
 	return (ret_line);
 }
 
-int	add_line(int read_ret, char **save, char *buff)
+static int	add_line(int read_ret, char **save, char *buff)
 {
 	char	*tmp;
 

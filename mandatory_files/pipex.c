@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:04:58 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/13 18:20:11 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/15 15:58:14 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ int	main(int argc, char *argv[], char **envp)
 	pid_t	pid;
 	t_args	args;
 
-	if (argc < 5)
-		return (1);
-	if (pipe(fds) == -1)
+	if (argc < 5 || pipe(fds) == -1)
 		return (1);
 	init_args(argv, argc, &args);
 	while (++args.idx < argc - 1)
