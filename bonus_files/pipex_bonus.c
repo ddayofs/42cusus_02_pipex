@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:04:58 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/15 16:47:28 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/15 17:10:42 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ int	make_tmp_here_doc_file(char *eof, t_args *args)
 	if (fd == -1)
 		exit(1);
 	new_line = get_next_line(0);
-	if (!new_line)
-		exit(0);
-	while (ft_strcmp(tmp, new_line))
+	while (new_line && ft_strcmp(tmp, new_line))
 	{
 		ft_putstr_fd(new_line, fd);
 		free(new_line);
