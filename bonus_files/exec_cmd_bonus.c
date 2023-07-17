@@ -6,7 +6,7 @@
 /*   By: donglee2 <donglee2@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:01:08 by donglee2          #+#    #+#             */
-/*   Updated: 2023/07/15 15:42:51 by donglee2         ###   ########seoul.kr  */
+/*   Updated: 2023/07/17 15:11:16 by donglee2         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	exec_1st_cmd(int fds[2], t_args *args, char **envp)
 	}
 	dup2(fd, STDIN_FILENO);
 	close (fd);
-	unlink("tmp");
+	unlink(args->infile_name);
 	close(fds[0]);
 	dup2(fds[1], STDOUT_FILENO);
 	close(fds[1]);
